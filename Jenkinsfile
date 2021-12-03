@@ -18,10 +18,10 @@ pipeline{
     stages {
         stage ('Git Checkout') {
             step {
-            echo 'Checking Out from Git'
-            git branch: params.BRANCH ,
-                credentialsId: "${GIT_CRED}" ,
-                url: "https://github.com/myrepo2021-test/gitcheck.git"
+                echo 'Checking Out from Git'
+                git branch: params.BRANCH ,
+                    credentialsId: "${GIT_CRED}" ,
+                    url: "https://github.com/myrepo2021-test/gitcheck.git"
 
             sh 'ls -ltr'
             }
