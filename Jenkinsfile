@@ -14,7 +14,7 @@ pipeline{
         // DOCKER_URL = https://hub.docker.com/repository/docker/renuka2021/dockerrepo
         // GIT_URL = https://github.com/myrepo2021-test/gitcheck.git
         // GIT_CRED = credentials('git_user')
-        CHECK = BRANCH
+        GIT = check
     }
     stages {
         stage ('Git Checkout') {
