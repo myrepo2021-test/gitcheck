@@ -19,11 +19,8 @@ pipeline{
         stage ('Git Checkout') {
             steps {
                 echo 'Checking Out from Git'
-                git branch: params.BRANCH ,
-                    credentialsId: "${GIT_CRED}" ,
-                    url: "https://github.com/myrepo2021-test/gitcheck.git"
-
-            sh 'ls -ltr'
+                checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[credentialsId: '7da824c6-7cc1-4681-bf28-5b7991b591e7', url: 'https://github.com/myrepo2021-test/gitcheck.git']]])
+                sh 'ls -ltr'
             }
         }
         stage ('Test') {
