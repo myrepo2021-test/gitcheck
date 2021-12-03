@@ -17,7 +17,7 @@ pipeline{
     }
     stages {
         stage ('Git Checkout') {
-            step {
+            steps {
                 echo 'Checking Out from Git'
                 git branch: params.BRANCH ,
                     credentialsId: "${GIT_CRED}" ,
@@ -27,7 +27,7 @@ pipeline{
             }
         }
         stage ('Test') {
-            step {
+            steps {
                 echo 'Checking the checked out code'
             }
         }
