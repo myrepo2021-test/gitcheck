@@ -11,10 +11,9 @@ pipeline{
         choice(name: 'BRANCH', choices:['master', 'dev','prod'], description: 'Select Branch to Build')
     }
     environment {
-        // DOCKER_URL = https://hub.docker.com/repository/docker/renuka2021/dockerrepo
-        // GIT_URL = https://github.com/myrepo2021-test/gitcheck.git
+        // DOCKER_URL = 'https://hub.docker.com/repository/docker/renuka2021/dockerrepo'
+         GIT_URL = 'https://github.com/myrepo2021-test/gitcheck.git'
         // GIT_CRED = credentials('git_user')
-        GIT_CRED = check
     }
     stages {
         stage ('Git Checkout') {
