@@ -13,6 +13,7 @@ pipeline{
     environment {
         // DOCKER_URL = 'https://hub.docker.com/repository/docker/renuka2021/dockerrepo'
          GIT_URL = 'https://github.com/myrepo2021-test/gitcheck.git'
+        DOCKER_LOGIN =credentials('DockerLogin')
         // GIT_CRED = credentials('git_user')
     }
     stages {
@@ -26,6 +27,18 @@ pipeline{
         stage ('Test') {
             steps {
                 echo 'Checking the checked out code'
+            }
+        }
+        stage ('Docker') {
+            steps {
+                echo 'Docker Login'  
+                withCredentials([usernamewithPassword(credentials: "${DOCKER_LOGIN}", usernameVariable: 'USER', passwordVariable: 'PWD' )]) {
+                    echo 'Logging into Docker'
+                    sh 'docker login renuka2021/sample -u ${USER} -p ${PWD}'
+                    sh 'docker pull renuka2021/sample:39'
+                    sh 'docker ps'
+                }
+                
             }
         }
     }
