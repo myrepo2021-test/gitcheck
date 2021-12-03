@@ -32,7 +32,7 @@ pipeline{
         stage ('Docker') {
             steps {
                 echo 'Docker Login'  
-                withCredentials([usernamewithPassword(credentials: "${DOCKER_LOGIN}", usernameVariable: 'USER', passwordVariable: 'PWD' )]) {
+                withDockerRegistry([ credentialsId: "5bff77df-6b9e-4345-9241-d99fdc4218c0", url: "" ]) {
                     echo 'Logging into Docker'
                     sh 'docker login renuka2021/sample -u ${USER} -p ${PWD}'
                     sh 'docker pull renuka2021/sample:39'
