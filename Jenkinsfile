@@ -12,7 +12,7 @@ pipeline{
     }
     environment {
         // DOCKER_URL = https://hub.docker.com/repository/docker/renuka2021/dockerrepo
-        GIT_URL = https://github.com/myrepo2021-test/gitcheck.git
+        // GIT_URL = https://github.com/myrepo2021-test/gitcheck.git
         GIT_CRED = credentials('git_user')
     }
     stages {
@@ -21,7 +21,7 @@ pipeline{
             echo 'Checking Out from Git'
             git branch: params.BRANCH ,
                 credentialsId: "${GIT_CRED}" ,
-                url: "${GIT_URL}"
+                url: "https://github.com/myrepo2021-test/gitcheck.git"
 
             sh 'ls -ltr'
             }
